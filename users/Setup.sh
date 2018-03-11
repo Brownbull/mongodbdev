@@ -24,5 +24,12 @@ copy NUL read_test.js
 copy NUL update_test.js
 copy NUL destroy_test.js
 
+# Database Structure
+$database.$Model.$schema.$instance[$index]
+user_test.user.UserSchema.gabe
+
+# Schema
+$Schema{properties: dataType}
+UserScema{name: String}
 
 
