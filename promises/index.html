@@ -9,19 +9,35 @@
   <button>click!</button>
   
   <script>
-    // console.log("game started");
-    let counter = 0
+    startGame = () => {
+          // console.log("game started");
+      let counter = 0
 
-    document.querySelector('button').addEventListener('click', () => {
-      ++counter
-    })
-    setTimeout(() => {
-      if (counter > 5){
-        alert("you won with " + counter + " clicks!")
-      } else {
-        alert("you loose with " + counter + " clicks!")
-      }
-    }, 2000)
+      document.querySelector('button').addEventListener('click', () => {
+        ++counter
+      })
+
+      return new Promise((res, err) => {
+        setTimeout(() => {
+          if (counter > 5) {
+            res()
+          } else {
+            err()
+          }
+        }, 2000)
+      })
+      // setTimeout(() => {
+      //   if (counter > 5) {
+      //     alert("you won with " + counter + " clicks!")
+      //   } else {
+      //     alert("you loose with " + counter + " clicks!")
+      //   }
+      // }, 2000)
+    } // eof startGame
+
+    startGame()
+      .then(() => alert("You Win!"))
+      .catch(() => alert("You lost!"))
   </script>
 </body>
 </html>
