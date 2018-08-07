@@ -42,12 +42,14 @@ describe('Updating users', () => {
     assertUpdate(User.findByIdAndUpdate(newUser._id, { name: 'Alex' }), done)
   })
 
+  // OPERATORS
   it('class method: increment user count by 1', (done) => {
     User.update({ name: 'Joe' }, { $inc: {postCount: 1}})
-      .then(() => User.find({ name: 'Joe' }))
-      .then((elements) => {
-        assert(elements.length && elements[0].postCount === 1)
-        done()
-      })
+    .then(() => User.findOne({ name: 'Joe' }))
+    .then((element) => {
+      assert(element.postCount === 1)
+      done()
+    })
   })
+  
 })
