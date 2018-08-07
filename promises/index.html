@@ -4,40 +4,45 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script> -->
 </head>
 <body>
-  <button>click!</button>
-  
+  <button>Click!</button>
+
   <script>
-    startGame = () => {
-          // console.log("game started");
+    function startGame(){
       let counter = 0
 
       document.querySelector('button').addEventListener('click', () => {
         ++counter
       })
-
-      return new Promise((res, err) => {
+      
+      return new Promise((resolve, reject) => {
         setTimeout(() => {
           if (counter > 5) {
-            res()
-          } else {
-            err()
+            resolve(counter)
+          }
+          else {
+            reject(counter)
           }
         }, 2000)
       })
       // setTimeout(() => {
       //   if (counter > 5) {
-      //     alert("you won with " + counter + " clicks!")
-      //   } else {
-      //     alert("you loose with " + counter + " clicks!")
+      //     alert('Winner! Your clicks: ' + counter)
+      //   }
+      //   else {
+      //     alert('Looser! Your clicks: ' + counter)
       //   }
       // }, 2000)
-    } // eof startGame
+    }
 
     startGame()
-      .then(() => alert("You Win!"))
-      .catch(() => alert("You lost!"))
+    .then((counter) => {alert('You Win! Your clicks: ' + counter)})
+    .catch((counter) => {alert('You Lost! Your clicks: ' + counter)})
+    
   </script>
 </body>
 </html>
