@@ -43,11 +43,11 @@ describe('Updating users', () => {
   })
 
   // OPERATORS
-  it('class method: increment user count by 1', (done) => {
-    User.update({ name: 'Joe' }, { $inc: {postCount: 1}})
+  it('class method: increment postCountManual count by 1', (done) => {
+    User.update({ name: 'Joe' }, { $inc: {postCountManual: 1}})
     .then(() => User.findOne({ name: 'Joe' }))
     .then((element) => {
-      assert(element.postCount === 1)
+      assert(element.postCountManual === 1)
       done()
     })
   })

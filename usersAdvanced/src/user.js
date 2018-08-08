@@ -11,8 +11,14 @@ const userSchema = new Schema({
     },
     required: [true, 'Name is required.']
   },
-  postCount: Number,
+  postCountManual: {
+    type: Number
+  },
   posts: [postSchema]
+})
+
+userSchema.virtual('postCountVirtual').get(function() {
+  return this.posts.length
 })
 
 const User = mongoose.model('user', userSchema)

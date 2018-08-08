@@ -34,4 +34,22 @@ describe('Subdocuments', () => {
       })
   })
 
+  it('model instance: delete after save', (done) => {
+    const newUser = new User({
+      name: 'Joe',
+      posts: [{ title: "New title" }]
+    })
+    newUser.save()
+      .then(() => User.findOne({ name: 'Joe' }))
+      .then((elementSaved) => {
+        elementSaved.posts[0].remove()
+        return elementSaved.save()
+      })
+      .then(() => User.findOne({ name: 'Joe' }))
+      .then((elementUpdated) => {
+        assert(!elementUpdated.posts.length)
+        done()
+      })
+  })
+
 })
