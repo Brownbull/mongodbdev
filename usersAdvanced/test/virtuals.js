@@ -16,7 +16,7 @@ describe('Virtual types', () => {
   it('postCountVirtual returns number of posts', (done) =>{
     User.findOne({ name: 'Joe' })
     .then((element) => {
-      assert(element.postCountVirtual)
+      assert(element.postCount)
       done()
     })
   })

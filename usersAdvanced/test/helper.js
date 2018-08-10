@@ -10,9 +10,13 @@ before((done) => { // executed just one time before all tests
 })
 
 beforeEach((done) => { // done tells mocha when to proceed with next test
-  mongoose.connection.collections.users.drop(() => {
-    // Ready to run next test
-    done()
+  const { users, comments, blogposts } = mongoose.connection.collections
+  users.drop(() => {
+    comments.drop(() => {
+      blogposts.drop(() => {
+        done()
+      })
+    })
   })
 })
 

@@ -16,7 +16,7 @@ describe('Updating users', () => {
   beforeEach((done) => {
     newUser = new User({ 
       name: 'Joe',
-      postCount : 0 
+      likes : 0 
     })
     newUser.save()
       .then(() => done())
@@ -43,11 +43,11 @@ describe('Updating users', () => {
   })
 
   // OPERATORS
-  it('class method: increment postCountManual count by 1', (done) => {
-    User.update({ name: 'Joe' }, { $inc: {postCountManual: 1}})
+  it('class method: increment likes count by 10', (done) => {
+    User.update({ name: 'Joe' }, { $inc: {likes: 10 }})
     .then(() => User.findOne({ name: 'Joe' }))
     .then((element) => {
-      assert(element.postCountManual === 1)
+      assert(element.likes === 10 )
       done()
     })
   })
