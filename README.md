@@ -7,3 +7,6 @@ https://github.com/StephenGrider/MongoCasts
 
 # mongo viewer
 https://robomongo.org/
+
+# init mongo from console
+mongod --dbpath D:\data\db
